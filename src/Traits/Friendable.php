@@ -300,6 +300,14 @@ trait Friendable
     }
 
     /**
+     * @return integer
+     */
+    public function getFriendRequestsCount()
+    {
+        return Friendship::whereRecipient($this)->whereStatus(Status::PENDING)->count();
+    }
+
+    /**
      * This method will not return Friendship models
      * It will return the 'friends' models. ex: App\User
      *
