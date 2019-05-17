@@ -21,7 +21,8 @@
         }
     },
     "require": {
-        "php": ">=5.4.0"
+        "php": ">=5.4.0",
+        "awobaz/compoships": "^1.1"
     },
     "require-dev": {
         "phpunit/phpunit" : "5.*",
