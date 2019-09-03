@@ -300,6 +300,18 @@ trait Friendable
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Collection|Friendship[]
+     */
+    public function getPendingReactions()
+    {
+        return Friendship::whereSender($this)->where(function (Builder $query) {
+            $query->where('status', Status::PENDING);
+            $query->orWhere('status', Status::DENIED);
+            $query->orWhere('status', Status::BLOCKED);
+        })->get();
+    }
+
+    /**
      * @return integer
      */
     public function getFriendRequestsCount()
